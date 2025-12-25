@@ -28,8 +28,8 @@ variable "default_zone" {
 }
 
 variable "vm_web_family" {
-  type        = string
-  default     = "ubuntu-2204-lts-oslogin"
+  type    = string
+  default = "ubuntu-2204-lts-oslogin"
 }
 
 

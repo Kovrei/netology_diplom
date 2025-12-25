@@ -31,7 +31,7 @@ resource "yandex_compute_instance" "masters" {
     nat       = each.value.nat_ip
   }
 
-  metadata = local.metadata 
+  metadata = local.metadata
 }
 
 
@@ -68,7 +68,7 @@ resource "yandex_compute_instance" "workers" {
     nat       = each.value.nat_ip
   }
 
-  metadata = local.metadata 
+  metadata = local.metadata
 }
 
 
