@@ -4,7 +4,7 @@ data "template_file" "deployment" {
     REGISTRY      = "rei169kov"
     IMAGE_NAME    = "nginx"
     APP_NAME      = "nginx"
-    IMAGE_TAG     = "v1"
+    IMAGE_TAG     = "1.0"
     NAMESPACE     = "diplom-nginx"
     REPLICA_COUNT = 3
   }

@@ -76,16 +76,31 @@
 ###
 1. 
 
-[]()
+
+
+`
+ansible-playbook -i ./inventory/mycluster/hosts.yaml --become --become-user=root cluster.yml
+`
 []()
 
+![alt text]()
+
 2. 
+
+
+`
+mkdir -p ~/.kube && ssh ubuntu@51.250.3.123 "sudo cat /root/.kube/config" >> ~/.kube/config
+
+`
 
 ![alt text]()
 
 ![alt text]()
 
 3.  
+
+
+
 
 ![alt text]()
 
@@ -112,6 +127,14 @@
 ###
 
 1.  
+
+`
+docker build -t rei169kov/nginx:v1 .
+docker run -d -p 80:80 rei169kov/nginx:1.0
+docker login 
+docker push rei169kov/nginx:1.0
+`
+
 
 ![alt text]()
 
@@ -154,6 +177,10 @@
 
 [options kubernetes]()
 
+`
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+`
+
 ![alt text]()
 
 ![alt text]()
@@ -167,6 +194,24 @@
 ![alt text]()
 
 4. 
+
+![alt text]()
+
+
+`
+kubectl -n monitoring rollout restart deploy/kube-prometheus-grafana
+kubectl get svc -A
+kubectl get po -n diplom-nginx -o wide
+kubectl get po -n ingress-nginx -o wide
+kubectl get pods -o wide -n monitoring
+`
+
+5. 
+
+`
+kubectl apply -f atlantis_ns.yaml -f atlantis-secrets.yaml -f atlantis_cm.yaml -f atlantis_dt.yaml -f atlantis_svc.yaml
+kubectl get pods -o wide -n atlantis
+`
 
 ![alt text]()
 

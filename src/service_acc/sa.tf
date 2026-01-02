@@ -1,6 +1,6 @@
 # Сервисный аккаунт для управления группой ВМ
 resource "yandex_iam_service_account" "ig-sa" {
-  name        = local.ig_name
+  name        = local.service_account_ig_name
   description = "Сервисный аккаунт для управления группой ВМ."
 }
 

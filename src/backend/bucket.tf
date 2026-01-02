@@ -1,5 +1,5 @@
 resource "yandex_iam_service_account" "sa" {
-  name = "sa-for-bucket"
+  name = local.service_account_name
 }
 
 # Назначение роли сервисному аккаунту
@@ -20,7 +20,7 @@ resource "yandex_storage_bucket" "tfstate" {
   secret_key    = yandex_iam_service_account_static_access_key.sa-static-key.secret_key
   bucket        = var.bucket
   force_destroy = true
-  depends_on = [yandex_resourcemanager_folder_iam_member.sa-editor]
+  depends_on    = [yandex_resourcemanager_folder_iam_member.sa-editor]
 }
 
 # Создание файла конфигурации для подключения бэкэнда terraform к S3

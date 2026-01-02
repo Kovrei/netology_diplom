@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: rei169kov/nginx:v1
+        image: rei169kov/nginx:1.0
         ports:
         - containerPort: 80

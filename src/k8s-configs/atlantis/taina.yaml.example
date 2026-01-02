@@ -1,0 +1,29 @@
+config:
+  url: https://ваш-git-провайдер.com
+  git_user: ваш-github-пользователь
+  git_token: ваш-github-токен
+  allow_rebuilds: true
+  allow_terraform_commands: true
+  webhook_secret: ваш-секрет
+  repo_whitelist:
+    - ваш-github-репозиторий
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: atlantis-secrets
+  namespace: atlantis
+type: Opaque
+stringData:
+  github-user: "<github_usename>"
+  repo-allowlist: "<your_repo>"
+  github-token: "<token>"
+  webhook-secret: "<secret>"
+  YC_OAUTH_TOKEN: "<token>"
+  YC_CLOUD_ID: "<id>"
+  YC_FOLDER_ID: "<id>"
+  ssh_username: "<user-ssh>"
+  s3-access-key: "<access-key>"
+  s3-secret-key: "<secret-key>"
+  ssh-public-key: "<public-key>"
