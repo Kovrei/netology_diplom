@@ -72,21 +72,21 @@ spec:
             value: "storage.yandexcloud.net"
           - name: AWS_EC2_METADATA_DISABLED
             value: "true"
-          - name: TF_VAR_yc_token
+          - name: TF_VAR_token
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_OAUTH_TOKEN
+                key: token
           - name: TF_VAR_cloud_id
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_CLOUD_ID
+                key: YC_cloud_id
           - name: TF_VAR_folder_id
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_FOLDER_ID
+                key: folder_id
           - name: TF_VAR_ssh_username
             valueFrom:
               secretKeyRef:
