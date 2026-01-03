@@ -4,7 +4,7 @@ terraform {
       source = "yandex-cloud/yandex"
     }
   }
-  required_version = ">= 1.11.3, < 1.13.1"
+  required_version = ">= 1.11.3, < 1.13.5"
 
   backend "s3" {
     endpoints = {
