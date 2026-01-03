@@ -34,7 +34,7 @@ resource "yandex_compute_instance" "masters" {
   #metadata = local.metadata 
 
   metadata = {
-  user-data = "${file("meta.txt")}"
+    user-data = "${file("meta.txt")}"
   }
 }
 
@@ -74,7 +74,7 @@ resource "yandex_compute_instance" "workers" {
 
   #metadata = local.metadata 
   metadata = {
-  user-data = "${file("meta.txt")}"
+    user-data = "${file("meta.txt")}"
   }
 }
 
