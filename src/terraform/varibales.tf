@@ -127,3 +127,8 @@ variable "k8s_vm_worker" {
     }
   ]
 }
+
+variable "metadata-file" {
+  type    = string
+  default = "./meta.txt"
+}
