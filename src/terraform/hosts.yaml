@@ -1,28 +1,28 @@
 all:
   hosts: 
     master-1:
-      ansible_host: 51.250.3.123
-      ip: 192.168.10.16
-      access_ip: 51.250.3.123
-      ansible_user: ubuntu
+      ansible_host: 158.160.56.163
+      ip: 192.168.10.21
+      access_ip: 158.160.56.163
+      ansible_user: aos
       ansible_python_interpreter: /usr/bin/python3
     worker-1:
-      ansible_host: 178.154.224.111
-      ip: 192.168.10.9
-      access_ip: 178.154.224.111
-      ansible_user: ubuntu
+      ansible_host: 158.160.104.244
+      ip: 192.168.10.18
+      access_ip: 158.160.104.244
+      ansible_user: aos
       ansible_python_interpreter: /usr/bin/python3
     worker-2:
-      ansible_host: 89.169.161.28
-      ip: 192.168.20.12
-      access_ip: 89.169.161.28
-      ansible_user: ubuntu
+      ansible_host: 158.160.14.32
+      ip: 192.168.20.16
+      access_ip: 158.160.14.32
+      ansible_user: aos
       ansible_python_interpreter: /usr/bin/python3
     worker-3:
-      ansible_host: 84.252.135.170
-      ip: 192.168.30.24
-      access_ip: 84.252.135.170
-      ansible_user: ubuntu
+      ansible_host: 158.160.159.87
+      ip: 192.168.30.9
+      access_ip: 158.160.159.87
+      ansible_user: aos
       ansible_python_interpreter: /usr/bin/python3
   
   children:

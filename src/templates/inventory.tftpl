@@ -5,7 +5,7 @@ all:
       ansible_host: ${i["network_interface"][0]["nat_ip_address"]}
       ip: ${i["network_interface"][0]["ip_address"]}
       access_ip: ${i["network_interface"][0]["nat_ip_address"]}
-      ansible_user: ubuntu
+      ansible_user: aos
       ansible_python_interpreter: /usr/bin/python3
     %{~ endfor ~}
   %{~ for i in workers ~}
@@ -13,7 +13,7 @@ all:
       ansible_host: ${i["network_interface"][0]["nat_ip_address"]}
       ip: ${i["network_interface"][0]["ip_address"]}
       access_ip: ${i["network_interface"][0]["nat_ip_address"]}
-      ansible_user: ubuntu
+      ansible_user: aos
       ansible_python_interpreter: /usr/bin/python3
     %{~ endfor ~}
   

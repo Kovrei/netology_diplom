@@ -6,8 +6,8 @@ kubectl get pods --all-namespaces
 cd ../terraform
 export API_ENDPOINT=$(terraform output -raw api_endpoint)
 3 rm -rf .kube
-4 mkdir -p ~/.kube && ssh ubuntu@51.250.3.123 "sudo cat /root/.kube/config" >> ~/.kube/config
-sed -i 's/127.0.0.1/51.250.3.123/g' ~/.kube/config
+4 mkdir -p ~/.kube && ssh aos@158.160.56.163 "sudo cat /root/.kube/config" >> ~/.kube/config
+sed -i 's/127.0.0.1/158.160.56.163/g' ~/.kube/config
 5 nano .kube/config
 kubectl get node
 kubectl get pods --all-namespaces
@@ -31,21 +31,18 @@ kubectl apply -f grafana-ingress.yaml  -f app-ingress.yaml
 KUBE_EDITOR="nano" kubectl -n monitoring edit cm kube-prometheus-grafana
 ###
 [server]
-domain = 178.154.224.111
-root_url = http://178.154.224.111/monitor/
+domain = 158.160.104.244
+root_url = http://158.160.104.244/monitor/
 serve_from_sub_path = true
 ###
 kubectl -n monitoring rollout restart deploy/kube-prometheus-grafana
 kubectl get svc -A
 kubectl get po -n diplom-nginx -o wide
-kubectl get po -n ingress-nginx -o wide
+kubectl get deploy -n diplom-nginx -o wide
 kubectl get pods -o wide -n monitoring
 
 kubectl apply -f atlantis_ns.yaml -f atlantis-secrets.yaml -f atlantis_cm.yaml -f atlantis_dt.yaml -f atlantis_svc.yaml
 kubectl get pods -o wide -n atlantis
 
-
-
 ###
-helm uninstall prometheus-stack -n monitoring
-kubectl delete namespace monitoring
+base64 -w 0 ~/.kube/config
