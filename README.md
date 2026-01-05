@@ -1,3 +1,5 @@
+# Дипломная работа. Андрей Осипенков
+
 # Этапы выполнения:
 
 
@@ -26,30 +28,46 @@
 1. Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий, стейт основной конфигурации сохраняется в бакете или Terraform Cloud
 2. Полученная конфигурация инфраструктуры является предварительной, поэтому в ходе дальнейшего выполнения задания возможны изменения.
 
-### 
+### Решение
 
-1. 
+1.
 
-![alt text]()
+[service_acc](https://github.com/Kovrei/netology_diplom/tree/main/src/service_acc) - конфигурация манифеста для сервис аккаунта с ролью админ  
 
-2. 
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.1.2.JPG?raw=true)
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.1.1.JPG?raw=true)
+
+
+2.
+   
+[backend](https://github.com/Kovrei/netology_diplom/tree/main/src/backend) - конфигурация манифеста backend. S3 bucket в созданном ЯО аккаунте(создание бакета через TF).
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.2.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.2.1.JPG?raw=true)
 
 3. 
 
-[]()
+[Структура манифеста](https://github.com/Kovrei/netology_diplom/tree/main/src)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.3.JPG?raw=true)
 
 4. 
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.4.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.5.JPG?raw=true)
+
 5. 
 
-![alt text]()
+[Script](https://github.com/Kovrei/netology_diplom/blob/main/src/script/setup-backend.sh) - скрипт для запуска манифестов  
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.5.1.JPG?raw=true)
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.5.2.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/1.5.3.JPG?raw=true)
 
 
 ---
@@ -73,36 +91,33 @@
 2. В файле `~/.kube/config` находятся данные для доступа к кластеру.
 3. Команда `kubectl get pods --all-namespaces` отрабатывает без ошибок.
 
-###
+### Решение
+
 1. 
 
+- Клонирование в [структуру](https://github.com/Kovrei/netology_diplom/tree/main/src) [Kubespray](https://kubernetes.io/docs/setup/production-environment/tools/kubespray/)  
 
+- Манифест [terraform](https://github.com/Kovrei/netology_diplom/tree/main/src/terraform) за счет опциональных файлов [ansible.tf](https://github.com/Kovrei/netology_diplom/blob/main/src/terraform/ansible.tf) и [inventory.tftpl](https://github.com/Kovrei/netology_diplom/blob/main/src/templates/inventory.tftpl) созадет файл [host.yaml](https://github.com/Kovrei/netology_diplom/blob/main/src/terraform/hosts.yaml) и копирует в    netology_diplom/src/kubespray/inventory/mycluster 
 
+В папке kuberspray выполнить команду
 `
 ansible-playbook -i ./inventory/mycluster/hosts.yaml --become --become-user=root cluster.yml
 `
-[]()
-
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/2.1.JPG?raw=true)
 
 2. 
 
-
+Выполнить команды
 `
-mkdir -p ~/.kube && ssh ubuntu@51.250.3.123 "sudo cat /root/.kube/config" >> ~/.kube/config
-
+mkdir -p ~/.kube && ssh aos@158.160.56.163 "sudo cat /root/.kube/config" >> ~/.kube/config
+sed -i 's/127.0.0.1/158.160.56.163/g' ~/.kube/config
 `
 
-![alt text]()
-
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/2.2.1.JPG?raw=true)
 
 3.  
 
-
-
-
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/2.3.JPG?raw=true)
 
 
 
@@ -124,9 +139,7 @@ mkdir -p ~/.kube && ssh ubuntu@51.250.3.123 "sudo cat /root/.kube/config" >> ~/.
 1. Git репозиторий с тестовым приложением и Dockerfile.
 2. Регистри с собранным docker image. В качестве регистри может быть DockerHub или [Yandex Container Registry](https://cloud.yandex.ru/services/container-registry), созданный также с помощью terraform.
 
-###
-
-1.  
+### Решение
 
 `
 docker build -t rei169kov/nginx:v1 .
@@ -135,17 +148,23 @@ docker login
 docker push rei169kov/nginx:1.0
 `
 
+[github repo](https://github.com/Kovrei/app_diplom_mission3)  
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/3.1.JPG?raw=true)
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/3.2.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/3.3.JPG?raw=true)
+
+1.  
 
 [github repo](https://github.com/Kovrei/app_diplom_mission3)  
 
 2.  
 
-![alt text]()
+[dockerhub repo](https://hub.docker.com/r/rei169kov/nginx)
 
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/3.4.JPG?raw=true)
 
 ---
 ## Подготовка cистемы мониторинга и деплой приложения
@@ -171,49 +190,80 @@ docker push rei169kov/nginx:1.0
 4. Http доступ на 80 порту к тестовому приложению.
 5. Atlantis или terraform cloud или ci/cd-terraform
 
-###
+
+### Решение
 
 1. 
 
-[options kubernetes]()
+- автоматическое создания для деплоя монитринга происходит при запуске terraform и настройки [monitoring.tf](https://github.com/Kovrei/netology_diplom/blob/main/src/terraform/monitoring.tf) 
+
+- В папке [~/netology_diplom/src/k8s-configs](https://github.com/Kovrei/netology_diplom/tree/main/src/k8s-configs) выполнить команды:
 
 `
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install kube-prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
+kubectl get secret --namespace monitoring -l app.kubernetes.io/component=admin-secret -o jsonpath="{.items[0].data.admin-password}" | base64 --decode ; echo
+kubectl get pods -o wide -n monitoring
+kubectl apply -f namespace.yaml -f deployment.yaml -f service.yaml
+kubectl get po -n diplom-nginx -o wide
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install my-nginx-ingress-controller ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.hostNetwork=true --set controller.service.enabled=false
+kubectl apply -f grafana-ingress.yaml  -f app-ingress.yaml
 `
-
-![alt text]()
-
-![alt text]()
-
-2. 
-
-![alt text]()
-
-3. 
-
-![alt text]()
-
-4. 
-
-![alt text]()
-
+- внести изменения в configmap командой
+`
+KUBE_EDITOR="nano" kubectl -n monitoring edit cm kube-prometheus-grafana
+`
+изменения:
+`
+[server]  
+domain = 158.160.104.244  
+root_url = http://158.160.104.244/monitor/  
+serve_from_sub_path = true  
+`
+- выполнить команду 
 
 `
 kubectl -n monitoring rollout restart deploy/kube-prometheus-grafana
-kubectl get svc -A
-kubectl get po -n diplom-nginx -o wide
-kubectl get po -n ingress-nginx -o wide
-kubectl get pods -o wide -n monitoring
 `
+[alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.1.JPG?raw=true)
+
+2.  
+
+[grafana](https://github.com/Kovrei/netology_diplom/blob/main/src/k8s-configs/grafana-ingress.yaml)
+
+3.
+
+[alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.2.1.JPG?raw=true)
+
+4.  
+[nginx](https://github.com/Kovrei/netology_diplom/blob/main/src/k8s-configs/app-ingress.yaml)
+
+[alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.2.2.JPG?raw=true)
 
 5. 
+
+В папке [atlantis](https://github.com/Kovrei/netology_diplom/tree/main/src/k8s-configs/atlantis) выполнить команды:
 
 `
 kubectl apply -f atlantis_ns.yaml -f atlantis-secrets.yaml -f atlantis_cm.yaml -f atlantis_dt.yaml -f atlantis_svc.yaml
 kubectl get pods -o wide -n atlantis
 `
 
-![alt text]()
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.4.JPG?raw=true)
+
+настройить webhook:
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.1.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.2.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.3.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.4.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.5.JPG?raw=true)
+
 
 ---
 ## Установка и настройка CI/CD
@@ -233,14 +283,44 @@ kubectl get pods -o wide -n atlantis
 2. При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
 3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
+### Решение
+
+1  
+
+Выбрана стратегия CI/CD через Git Action.
+
+- Настроены secrets в [github репозитории](https://github.com/Kovrei/app_diplom_mission3)  
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.1.JPG?raw=true)
+
+- настроен для CI/CD [workflows](https://github.com/Kovrei/app_diplom_mission3/blob/main/.github/workflows/pipi.yaml)  
+
+2  
+
+- Автоматизация CI в github
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.3.2.JPG?raw=true)
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.3.3.JPG?raw=true)
+
+3  
+
+- Автоматизация CI в dockerhub
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.4.1.JPG?raw=true)
+
+- актуализация изменения в http
+
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.4.2.JPG?raw=true)
+
 ---
 ## Что необходимо для сдачи задания?
 
-1. Репозиторий с конфигурационными файлами Terraform и готовность продемонстрировать создание всех ресурсов с нуля.
-2. Пример pull request с комментариями созданными atlantis'ом или снимки экрана из Terraform Cloud или вашего CI-CD-terraform pipeline.
-3. Репозиторий с конфигурацией ansible, если был выбран способ создания Kubernetes кластера при помощи ansible.
-4. Репозиторий с Dockerfile тестового приложения и ссылка на собранный docker image.
-5. Репозиторий с конфигурацией Kubernetes кластера.
-6. Ссылка на тестовое приложение и веб интерфейс Grafana с данными доступа.
-7. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab)
+1. Репозиторий с конфигурационными файлами Terraform и готовность продемонстрировать создание всех ресурсов с нуля. [структура](https://github.com/Kovrei/netology_diplom/tree/main/src)
+2. Пример pull request с комментариями созданными atlantis'ом или снимки экрана из Terraform Cloud или вашего CI-CD-terraform pipeline. 
+![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.5.JPG?raw=true)
+3. Репозиторий с конфигурацией [ansible](https://github.com/Kovrei/netology_diplom/blob/main/src/terraform/ansible.tf), если был выбран способ создания Kubernetes кластера при помощи ansible.
+4. Репозиторий с [Dockerfile](https://github.com/Kovrei/app_diplom_mission3/blob/main/Dockerfile) тестового приложения и [ссылка на собранный docker image](https://hub.docker.com/repository/docker/rei169kov/nginx/general).
+5. Репозиторий с конфигурацией Kubernetes кластера. [Kubespray](https://kubernetes.io/docs/setup/production-environment/tools/kubespray/)
+6. Ссылка на [тестовое приложение](http://158.160.159.87/) и веб интерфейс [Grafana](http://158.160.159.87/monitor/) с данными доступа.
+7. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab). [структура](https://github.com/Kovrei/netology_diplom/tree/main/src) и [тест приложение](https://github.com/Kovrei/app_diplom_mission3) 
 
