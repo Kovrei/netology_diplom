@@ -43,17 +43,17 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_OAUTH_TOKEN
+                key: token
           - name: YC_CLOUD_ID
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_CLOUD_ID
+                key: cloud_id
           - name: YC_FOLDER_ID
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_FOLDER_ID
+                key: folder_id
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
               secretKeyRef:
@@ -72,7 +72,7 @@ spec:
             value: "storage.yandexcloud.net"
           - name: AWS_EC2_METADATA_DISABLED
             value: "true"
-          - name: TF_VAR_token
+          - name: TF_VAR_yc_token
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
@@ -81,7 +81,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: atlantis-secrets
-                key: YC_cloud_id
+                key: cloud_id
           - name: TF_VAR_folder_id
             valueFrom:
               secretKeyRef:
