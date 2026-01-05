@@ -205,7 +205,7 @@ docker push rei169kov/nginx:1.0
 
 **- В папке [~/netology_diplom/src/k8s-configs](https://github.com/Kovrei/netology_diplom/tree/main/src/k8s-configs) выполнить команды:**  
 
-`
+
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts   
 
 helm install kube-prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
@@ -223,13 +223,13 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install my-nginx-ingress-controller ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.hostNetwork=true --set controller.service.enabled=false  
 
 kubectl apply -f grafana-ingress.yaml  -f app-ingress.yaml  
-`
+
 **- внести изменения в configmap командой**  
-`
+
 KUBE_EDITOR="nano" kubectl -n monitoring edit cm kube-prometheus-grafana  
-`
+
 **- изменения:**  
-`
+
 [server]   
 domain = 158.160.104.244   
 root_url = http://158.160.104.244/monitor/    
