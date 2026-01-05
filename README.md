@@ -252,7 +252,7 @@ kubectl get pods -o wide -n atlantis
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.4.JPG?raw=true)
 
-- настройить webhook:  
+**- настройить webhook:**
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.1.JPG?raw=true)
 
@@ -287,9 +287,9 @@ kubectl get pods -o wide -n atlantis
 
 1  
 
-Выбрана стратегия CI/CD через Git Action.
+**Выбрана стратегия CI/CD через Git Action**  
 
-- Настроены secrets в [github репозитории](https://github.com/Kovrei/app_diplom_mission3)  
+**- Настроены secrets в [github репозитории](https://github.com/Kovrei/app_diplom_mission3)**    
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.1.JPG?raw=true)
 
@@ -297,18 +297,19 @@ kubectl get pods -o wide -n atlantis
 
 2  
 
-- Автоматизация CI в github
+**- Автоматизация CI в github**
+
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.3.2.JPG?raw=true)
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.3.3.JPG?raw=true)
 
 3  
 
-- Автоматизация CI в dockerhub
+**- Автоматизация CD в dockerhub**
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.4.1.JPG?raw=true)
 
-- актуализация изменения в http
+**- актуализация изменения в http**
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/5.4.2.JPG?raw=true)
 
