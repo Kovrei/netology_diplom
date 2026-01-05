@@ -10,9 +10,9 @@ terraform {
     endpoints = {
       s3 = "https://storage.yandexcloud.net"
     }
-    bucket     = "diplom-osipenkov"
-    region     = "ru-central1-a"
-    key        = "terraform.tfstate"
+    #bucket     = "diplom-osipenkov"
+    #region     = "ru-central1-a"
+    #key        = "terraform.tfstate"
     skip_region_validation      = true
     skip_credentials_validation = true
     skip_requesting_account_id  = true # Необходимая опция Terraform для версии 1.6.1 и старше.
