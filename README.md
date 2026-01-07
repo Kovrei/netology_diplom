@@ -104,16 +104,17 @@
 `
 ansible-playbook -i ./inventory/mycluster/hosts.yaml --become --become-user=root cluster.yml  
 `
+
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/2.1.JPG?raw=true)
 
 2. 
 
-**- Выполнить команды**
-`
+**- Выполнить команды**  
+```
 mkdir -p ~/.kube && ssh aos@158.160.56.163 "sudo cat /root/.kube/config" >> ~/.kube/config
 
 sed -i 's/127.0.0.1/158.160.56.163/g' ~/.kube/config
-`
+```
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/2.2.1.JPG?raw=true)
 
@@ -143,18 +144,17 @@ sed -i 's/127.0.0.1/158.160.56.163/g' ~/.kube/config
 
 ### Решение
 
-`
-docker build -t rei169kov/nginx:v1 .  
+**Выполнить команды для создания образа:**
+
+```
+docker build -t rei169kov/nginx:1.0 .  
 
 docker run -d -p 80:80 rei169kov/nginx:1.0  
 
 docker login   
 
 docker push rei169kov/nginx:1.0  
-
-`
-
-[github repo](https://github.com/Kovrei/app_diplom_mission3)  
+```
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/3.1.JPG?raw=true)
 
@@ -205,7 +205,7 @@ docker push rei169kov/nginx:1.0
 
 **- В папке [~/netology_diplom/src/k8s-configs](https://github.com/Kovrei/netology_diplom/tree/main/src/k8s-configs) выполнить команды:**  
 
-
+```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts   
 
 helm install kube-prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
@@ -223,23 +223,25 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install my-nginx-ingress-controller ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.hostNetwork=true --set controller.service.enabled=false  
 
 kubectl apply -f grafana-ingress.yaml  -f app-ingress.yaml  
-
+```
 **- внести изменения в configmap командой**  
-
+```
 KUBE_EDITOR="nano" kubectl -n monitoring edit cm kube-prometheus-grafana  
-
+```
 **- изменения:**  
-
+```
 [server]   
 domain = 158.160.104.244   
 root_url = http://158.160.104.244/monitor/    
 serve_from_sub_path = true    
-`
+```
+
 **- выполнить команду**  
 
-`
+```
 kubectl -n monitoring rollout restart deploy/kube-prometheus-grafana  
-`
+```
+
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.1.JPG?raw=true)
 
 2.  
@@ -259,15 +261,15 @@ kubectl -n monitoring rollout restart deploy/kube-prometheus-grafana
 
 **- В папке [atlantis](https://github.com/Kovrei/netology_diplom/tree/main/src/k8s-configs/atlantis) выполнить команды:**  
 
-`
+```
 kubectl apply -f atlantis_ns.yaml -f atlantis-secrets.yaml -f atlantis_cm.yaml -f atlantis_dt.yaml -f atlantis_svc.yaml  
 
 kubectl get pods -o wide -n atlantis  
-`
+```
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.4.JPG?raw=true)
 
-**- настройить webhook:**
+**- настройить webhook:**  
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.1.JPG?raw=true)
 
