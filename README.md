@@ -144,7 +144,7 @@ sed -i 's/127.0.0.1/158.160.56.163/g' ~/.kube/config
 
 ### Решение
 
-**Выполнить команды для создания образа:**
+**- Выполнить команды для создания образа:**
 
 ```
 docker build -t rei169kov/nginx:1.0 .  
@@ -201,7 +201,7 @@ docker push rei169kov/nginx:1.0
 
 1. 
 
-**- автоматическое создания для деплоя монитринга происходит при запуске terraform и настройки [monitoring.tf](https://github.com/Kovrei/netology_diplom/blob/main/src/terraform/monitoring.tf)**
+**- Автоматизация создания подготовительных конфигураций для деплоя монитринга происходит при запуске terraform [monitoring.tf](https://github.com/Kovrei/netology_diplom/blob/main/src/terraform/monitoring.tf)**
 
 **- В папке [~/netology_diplom/src/k8s-configs](https://github.com/Kovrei/netology_diplom/tree/main/src/k8s-configs) выполнить команды:**  
 
@@ -224,11 +224,15 @@ helm install my-nginx-ingress-controller ingress-nginx/ingress-nginx --namespace
 
 kubectl apply -f grafana-ingress.yaml  -f app-ingress.yaml  
 ```
-**- внести изменения в configmap командой**  
+
+**- Внести изменения в configmap командой**  
+
 ```
 KUBE_EDITOR="nano" kubectl -n monitoring edit cm kube-prometheus-grafana  
 ```
-**- изменения:**  
+
+**- Конкретные изменения:**  
+
 ```
 [server]   
 domain = 158.160.104.244   
@@ -269,7 +273,7 @@ kubectl get pods -o wide -n atlantis
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.4.JPG?raw=true)
 
-**- настройить webhook:**  
+**- Настроить webhook:**  
 
 ![alt text](https://github.com/Kovrei/netology_diplom/blob/main/img/4.5.1.JPG?raw=true)
 
